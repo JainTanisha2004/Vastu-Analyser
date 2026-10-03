@@ -1,0 +1,77 @@
+# Dependency directories
+**/node_modules/
+
+# Build and distribution directories
+**/dist/
+**/build/
+
+# Python virtual environments
+**/venv/
+**/.venv/
+**/env/
+**/ENV/
+
+# Python bytecode and caches
+**/__pycache__/
+**/*.py[cod]
+**/*$py.class
+**/.pytest_cache/
+**/.mypy_cache/
+**/.ruff_cache/
+
+# Playwright/E2E test outputs
+**/test-results/
+**/playwright-report/
+**/.playwright-artifacts/
+
+# Project-local AI context
+ai_project_context.md
+/IMPLEMENTATION_MASTER_GUIDE.md
+/codex_5.6sol_audit.md
+
+# Editor and IDE settings
+.vscode/
+.idea/
+*.code-workspace
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Operating-system files
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Root-level tool caches
+.vite/
+
+# Logs and temporary files
+*.log
+*.tmp
+*.temp
+*.bak
+*.orig
+*~
+backend/temp/
+
+# Project planning, handoff plans and internal roadmaps
+FUTURE_IDEAS.md
+GEMINI_HANDOFF_PLAN.md
+TODO.md
+implementation-plans/
+codex_5.6sol_audit.md
+IMPLEMENTATION_MASTER_GUIDE.md
+Porject_audit_by_Astra.md
+
+# Environment variables & secrets (root and all subfolders)
+**/.env
+**/.env.*
+*.env
+*.env.*
+!.env.example
+
+# Test coverage & test outputs
+**/coverage/
+*.lcov

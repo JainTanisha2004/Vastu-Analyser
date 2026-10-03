@@ -1,0 +1,214 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&family=Playfair+Display:ital,wght@0,700;0,800;1,700&display=swap');
+@import "tailwindcss";
+
+:root {
+  --orange-primary: #EA580C;
+  --yellow-cta: #EAB308;
+  --card-bg: #FFFFFF;
+  --text-dark: #1C1917;
+  --text-muted: #78716C;
+  --step-line: #EA580C;
+  --auspicious: #16A34A;
+  --inauspicious: #EA580C;
+  --unfavourable: #DC2626;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  font-family: 'Nunito', system-ui, sans-serif;
+  min-height: 100vh;
+  background: linear-gradient(
+    135deg,
+    #7C2D12 0%, #C2440A 6%, #EA580C 14%, #F97316 22%,
+    #FDBA74 35%, #FFF7ED 50%,
+    #FDBA74 65%, #F97316 78%, #EA580C 86%, #C2440A 94%, #7C2D12 100%
+  );
+  background-attachment: fixed;
+}
+
+h1, h2, h3, .playfair { font-family: 'Playfair Display', Georgia, serif; }
+
+/* ── Selection ────────────────────────────────────────── */
+::selection {
+  background: rgba(234, 88, 12, 0.2);
+  color: #1C1917;
+}
+
+/* ── Custom Scrollbar ─────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #D6D3D1;
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #A8A29E;
+}
+
+/* ── Animations ─────────────────────────────────────────── */
+@keyframes orbit {
+  0%   { transform: translate(0px, -40px); }
+  25%  { transform: translate(40px, 0px); }
+  50%  { transform: translate(0px, 40px); }
+  75%  { transform: translate(-40px, 0px); }
+  100% { transform: translate(0px, -40px); }
+}
+
+@keyframes pulse-ring {
+  0%   { box-shadow: 0 0 0 0 rgba(234, 88, 12, 0.5); }
+  70%  { box-shadow: 0 0 0 12px rgba(234, 88, 12, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(234, 88, 12, 0); }
+}
+
+@keyframes compass-rotate {
+  0%   { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes fadeSlideIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeSlideDown {
+  from { opacity: 0; transform: translate(-50%, -20px); }
+  to   { opacity: 1; transform: translate(-50%, 0); }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes gentle-float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-6px); }
+}
+
+.animate-fadeSlideIn {
+  animation: fadeSlideIn 0.35s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.animate-fadeSlideDown {
+  animation: fadeSlideDown 0.3s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.animate-orbit {
+  animation: orbit 2.5s infinite ease-in-out;
+}
+
+.animate-pulse-ring {
+  animation: pulse-ring 1.8s infinite;
+}
+
+.animate-compass-slow {
+  animation: compass-rotate 5s linear infinite;
+}
+
+.animate-spin-slow {
+  animation: spin 0.8s linear infinite;
+}
+
+.animate-float {
+  animation: gentle-float 3s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  background: linear-gradient(90deg, transparent 0%, rgba(234,88,12,0.08) 50%, transparent 100%);
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+/* ── Print Media Styles ─────────────────────────────────── */
+@media screen {
+  .print-report-container:not(.screen-preview) {
+    display: none !important;
+  }
+}
+
+@media print {
+  @page {
+    size: A4 landscape;
+    margin: 0;
+  }
+
+  /* Hide all screen-only elements */
+  body * {
+    visibility: hidden;
+  }
+
+  body {
+    background: white !important;
+  }
+
+  /* Make the print report container and its contents visible */
+  .print-report-container,
+  .print-report-container * {
+    visibility: visible;
+  }
+
+  /* Position the print report container cleanly at the top-left */
+  .print-report-container {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 297mm;
+    background: #ffffff !important;
+    color: #1c1917 !important;
+    display: block !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Set landscape page bounds and breaks */
+  .print-page {
+    page-break-after: always;
+    page-break-inside: avoid;
+    break-after: page;
+    break-inside: avoid;
+    width: 297mm !important;
+    height: 210mm !important;
+    min-height: 210mm !important;
+    box-sizing: border-box;
+    padding: 12mm 16mm !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    background: #ffffff !important;
+    overflow: hidden !important;
+  }
+
+  .print-page:last-child {
+    page-break-after: auto;
+    break-after: auto;
+  }
+
+  /* Ensure background colors print correctly */
+  table, tr, td, th, div, span, rect, circle {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Ensure SVG renders cleanly */
+  svg {
+    max-width: 100% !important;
+  }
+}

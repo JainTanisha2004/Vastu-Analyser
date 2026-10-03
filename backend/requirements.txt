@@ -1,0 +1,7 @@
+fastapi
+uvicorn[standard]
+ezdxf
+matplotlib
+python-multipart
+google-genai
+python-dotenv
